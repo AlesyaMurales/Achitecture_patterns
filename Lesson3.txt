@@ -1,0 +1,15 @@
+
+1. Провести code review ваших прошлых проектов, чтобы найти использование антипаттернов.
+Укажите классы и строки, в которых они проявляются. Или найти места, где антипаттерны
+могли бы появиться, но код написан верно.
+2. Распределить обнаруженные антипаттерны по категориям согласно классификации,
+рассмотренной на уроке. Предложить способы избавиться от антипаттернов. Были ли случаи,
+когда их применение было оправданным?
+
+
+Архитектурные антипаттерны - Magic pushbutton - в архитектуре MVC, логика находится не в Модели, а в
+Представлении - https://github.com/AlesyaMurales/PHP1/pull/7 - /view/task.php -<?php if (empty($_SESSION['tasks']->getUndoneList())): ?> получаем список прямо в шаблоне
+
+Антипаттерны разработки - Spaghetti Code - Вместо одного запроса к БД с объединением JOIN, множество запросов к разным таблицам БД, типа $userRepository = new SqliteUsersRepository($this->connection, $this->logger) - https://github.com/AlesyaMurales/PHP2/pull/8 - src/Blog/Repositories/CommentsRepository/SqliteCommentsRepository.php - стр.65-66 и src/Blog/Repositories/PostsRepository/SqlitePostsRepository.php - стр. 63-64
+
+Антипаттерны разработки - Blind Faith - неполное покрытие тестами кода - всего OK (36 tests, 56 assertions) - https://github.com/AlesyaMurales/PHP2/pull/8 - отсутствует тестирование /src/Blog/Repositories/AuthTokensRepository
